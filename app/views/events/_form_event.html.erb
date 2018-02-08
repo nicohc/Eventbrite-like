@@ -1,0 +1,17 @@
+<%= form_for(@event) do |f| %>
+  <%= render 'shared/error_messages_event', object: @event %>
+
+  <%= f.label :"Nom de l'évenement" %>
+  <%= f.text_field :title, class: 'form-control' %>
+
+  <%= f.label :"Description de l'évenement" %>
+  <%= f.text_field :description, class: 'form-control' %>
+
+  <%= f.label :place %>
+  <%= f.text_field :place, class: 'form-control' %>
+
+  <%= f.label :date %>
+  <%= f.date_field :date, class: 'form-control' %>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

@@ -1,25 +1,12 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Eventbrite-like
 
-Things you may want to cover:
+En cours de réalisation .
 
-* Ruby version
+POur l'instant :
+- Création de Users, Modification et suppression de profil,   : OK
+- Création d'événement : OK
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# Eventbrite-like
+- Indexation, modification, suppression des events : NO OK
+- Ajout d'attendees : NO OK 

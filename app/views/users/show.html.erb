@@ -1,0 +1,17 @@
+<% provide(:title, @user.name) %>
+<h1>
+  <%= gravatar_for @user %>
+  <%= @user.name %>
+</h1>
+<br><br>
+Voici les informations entrées :
+<br><br>
+<p>Prénom: <%= @user.name %>
+<br>Email: <%= @user.email %></p>
+</p>
+<br>
+<p> <%= link_to "Rectifier les inforamtions", edit_user_path%></p>
+<p> <%= link_to 'Supprimer ce profil', user_path(@user), method: :delete ,
+              data: { confirm: 'Etes vous sur ?' }%></p>
+<br>
+<p> <a href="/">Retourner à l'accueil</a> </p>

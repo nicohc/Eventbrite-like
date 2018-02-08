@@ -1,0 +1,14 @@
+<h2>L'évenement créé : <%= @event.title %></h2>
+<br><br>
+<p>Un événement créé par <%= @event.creator.name %>
+<p>Description de l'événement: <%= @event.description %>
+  <br>
+<p>Le lieu: <%= @event.place %>
+<br>Le jour: <%= @event.date %></p>
+</p>
+<br>
+<p> <%= link_to "Rectifier les inforamtions sur l'événement", edit_event_path%></p>
+<p> <%= link_to 'Supprimer cet évenement', event_path(@event), method: :delete ,
+              data: { confirm: 'Etes vous sur ?' }%></p>
+<br>
+<p> <a href="/">Retourner à l'accueil</a> </p>
