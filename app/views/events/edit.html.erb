@@ -6,7 +6,8 @@
   <%= render 'form_event' %>
 </div>
 <br>
-<h4>Effacer l'événement</h4>
-<%= link_to 'Cliquer ici pour effacer cet événement', @event, method: :delete %>
+<div class="col-md-6 col-md-offset-3">
+<h4>Effacer l'événement</h4><%= link_to 'Cliquer ici pour effacer cet événement', @event, method: :delete %>
 <br><br>
 <%= link_to 'Retour', event_path %>
+</div>

@@ -26,8 +26,9 @@ class EventsController < ApplicationController
 
     def edit
       @event = Event.find(params[:id])
-      if @event.creator != current_user.id
-        flash[:danger] = 'Accès refusé !'
+      #Condition pour éviter l'édition d'événements don on n'est pas le creator.
+      if @event.creator.id != current_user.id
+        flash[:danger] = 'Accès refusé ! '
         redirect_to root_path
       end
     end
@@ -43,7 +44,7 @@ class EventsController < ApplicationController
     end
 
     def destroy
-      @event = event.find(params[:id])
+      @event = Event.find(params[:id])
       @event.destroy
       redirect_to events_path
       #On redirige vers l'index

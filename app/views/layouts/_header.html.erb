@@ -5,6 +5,7 @@
         <li><%= link_to "Accueil", '/' %></li>
         <% if logged_in? %>
             <li><%= link_to "Mon profil", current_user %></li>
+            <li><%= link_to "Liste des événements", events_path %> </li>
             <li class="divider"></li>
             <li><%= link_to "Déconnexion", logout_path, method: :delete %> </li>
 

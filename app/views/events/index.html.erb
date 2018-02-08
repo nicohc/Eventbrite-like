@@ -1,0 +1,26 @@
+<h3>
+  Liste des événements :
+</h3>
+<table>
+  <tr>
+    <th>ID de l'evenement</th>
+    <th>Nom de l'événement</th>
+    <th>Date</th>
+    <td>Lieu</td>
+    <th>Createur</th>
+  </tr>
+  <br>
+  <% @events.each do |event| %>
+  <tr>
+    <td><%= event.id %></td>
+    <td><%= event.title %> </td>
+    <td><%= event.date %></td>
+    <td><%= event.place %></td>
+    <td><%= event.creator.name %> </td>
+    <td><%= link_to " Voir l'événement", event_path(event) %></td>
+
+  </tr>
+  <% end %>
+</table>
+<br><br>
+<%= link_to "Créer un nouvel événement", '/events/new' %>
