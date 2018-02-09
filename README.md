@@ -8,3 +8,7 @@
 - Modification/suppression des events par leur créateur uniquement ! : OK
 - Inscription à des événements : OK
 - Affichage des créations et inscriptions aux events sur son profil avec distinction événements passés et avenirs : OK
+
+
+Le lien magique : https://zeventbrite.herokuapp.com/events  
+(Avec un tout petit peu de css quand même sinon ca pique)
