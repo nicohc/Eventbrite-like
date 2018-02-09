@@ -11,4 +11,28 @@
 <p> <%= link_to 'Supprimer cet évenement', event_path(@event), method: :delete ,
               data: { confirm: 'Etes vous sur ?' }%></p>
 <br>
+
+<%= button_to "S'inscrire à l'événement", {:controller => :events,
+      :action => 'subscribe' }, :class => 'btn btn-primary'%>
+<br><br>
+<h3>
+  Liste des personnes inscrites à l'événement :
+</h3>
+<table>
+  <tr>
+    <th>Pseudo</th>
+    <th>Profil</th>
+  </tr>
+  <br>
+  <% @event.attendees.each do |user| %>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= link_to "Voir le profil", user_path(user)%></td>
+  </tr>
+  <% end %>
+</table>
+<br><br>
+
+
+
 <p> <a href="/">Retourner à l'accueil</a> </p>

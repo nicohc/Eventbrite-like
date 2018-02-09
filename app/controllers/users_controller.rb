@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+
   def edit
     @user = User.find(params[:id])
     if @user.id != current_user.id
@@ -41,9 +42,15 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find(params[:id])
-    @user.destroy
-    redirect_to users_path
-    #On redirige vers l'index
+    #ON met une condition pour empëcher la suppression des comptes des autres.
+    if @user.id = current_user.id
+        @user.destroy
+        redirect_to users_path
+        #On redirige vers l'index
+    else
+        flash[:danger] = "Refusé ! C'est pô très gentil de vouloir faire ça !"
+        redirect_to root_path
+    end
   end
 
 

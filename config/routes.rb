@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get 'events/create'
   get 'events', to:"events#index"
 
+  post 'events/:id', to: "events#subscribe"
+
 end

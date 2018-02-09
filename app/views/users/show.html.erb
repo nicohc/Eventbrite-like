@@ -13,5 +13,100 @@ Voici les informations entrées :
 <p> <%= link_to "Rectifier les inforamtions", edit_user_path%></p>
 <p> <%= link_to 'Supprimer ce profil', user_path(@user), method: :delete ,
               data: { confirm: 'Etes vous sur ?' }%></p>
-<br>
+<br><br>
+
+<h3>
+  Liste des événements à venir créés par <%= @user.name %> :
+</h3>
+
+<table>
+  <tr>
+    <th>ID de l'evenement</th>
+    <th>Nom de l'événement</th>
+    <th>Date</th>
+    <th>Lieu</th>
+  </tr>
+  <br>
+  <!--On affiche chaque événement ajoutés dans la table created_events  -->
+  <% @user.created_events.each do |event| %>
+    <!-- On récupère uniquement les événements à venir-->
+     <% if event.date >= Date.today %>
+        <tr>
+          <td><%= event.id %></td>
+          <td><%= event.title %> </td>
+          <td><%= event.date %></td>
+          <td><%= event.place %></td>
+          <td><%= link_to "Voir l'événement", event_path(event) %></td>
+        </tr>
+     <% end%>
+  <% end %>
+</table>
+<br><br>
+
+
+<%= link_to "Créer un nouvel événement", '/events/new' %>
+
+
+
+<h3>
+  Liste des événements auxquels <%= @user.name %> participe prochainement :
+</h3>
+
+<table>
+  <tr>
+    <th>ID de l'evenement</th>
+    <th>Nom de l'événement</th>
+    <th>Date</th>
+    <th>Lieu</th>
+  </tr>
+  <br>
+  <!--On affiche chaque événement ajoutés dans la table attended_events  -->
+  <% @user.attended_events.each do |event| %>
+       <!-- On récupère uniquement les événements à venir-->
+       <% if event.date >= Date.today %>
+         <tr>
+            <td><%= event.id %></td>
+            <td><%= event.title %> </td>
+            <td><%= event.date %></td>
+            <td><%= event.place %></td>
+            <td><%= link_to "Voir l'événement", event_path(event) %></td>
+          </tr>
+        <% end %>
+  <% end %>
+</table>
+
+<br><br>
+
+<h3>
+  Liste des événements auxquels <%= @user.name %> a participé :
+</h3>
+
+<table>
+  <tr>
+    <th>ID de l'evenement</th>
+    <th>Nom de l'événement</th>
+    <th>Date</th>
+    <th>Lieu</th>
+  </tr>
+  <br>
+  <!--On affiche chaque événement ajoutés dans la table attended_events  -->
+  <% @user.attended_events.each do |event| %>
+  <!-- On récupère uniquement les événements à venir-->
+
+    <!-- On récupère uniquement les événements passés-->
+     <% if event.date < Date.today %>
+       <tr>
+          <td><%= event.id %></td>
+          <td><%= event.title %> </td>
+          <td><%= event.date %></td>
+          <td><%= event.place %></td>
+          <td><%= link_to "Voir l'événement", event_path(event) %></td>
+        </tr>
+      <% end %>
+  <% end %>
+</table>
+<br><br>
+
+
+<br><br>
 <p> <a href="/">Retourner à l'accueil</a> </p>

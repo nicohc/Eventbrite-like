@@ -1,6 +1,11 @@
 class EventsController < ApplicationController
     def new
-      @event= Event.new
+      if logged_in?
+          @event= Event.new
+      else
+          redirect_to root_url
+          flash[:danger] = "Veuillez vous connecter pour créer un nouvel événement."
+      end
     end
 
     def create
@@ -18,7 +23,10 @@ class EventsController < ApplicationController
 
     def show
       @event = Event.find(params[:id])
+
     end
+
+
 
     def index
       @events = Event.all
@@ -26,7 +34,7 @@ class EventsController < ApplicationController
 
     def edit
       @event = Event.find(params[:id])
-      #Condition pour éviter l'édition d'événements don on n'est pas le creator.
+      #Condition pour éviter l'édition d'événements dont on n'est pas le creator.
       if @event.creator.id != current_user.id
         flash[:danger] = 'Accès refusé ! '
         redirect_to root_path
@@ -45,9 +53,28 @@ class EventsController < ApplicationController
 
     def destroy
       @event = Event.find(params[:id])
-      @event.destroy
-      redirect_to events_path
-      #On redirige vers l'index
+      #Condition pour éviter l'édition d'événements dont on n'est pas le creator.
+      if @event.creator.id != current_user.id
+        flash[:danger] = 'Accès refusé ! '
+        redirect_to root_path
+      else
+        @event.destroy
+        redirect_to events_path
+        #On redirige vers l'index
+      end
+    end
+
+    def subscribe
+      @event = Event.find(params[:id])
+      #COndition pour éviter de s'inscrire plusieurs fois
+      if @event.attendees.include? current_user
+          redirect_to @event
+          flash[:danger] = "Vous êtes déjà inscrits"
+      else
+          @event.attendees << current_user
+          flash[:success] = "Vous êtes inscrits"
+          redirect_to @event
+      end
     end
 
 

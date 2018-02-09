@@ -1,6 +1,7 @@
 <h3>
   Liste des événements :
 </h3>
+<h4>Evenements à venir:</h4>
 <table>
   <tr>
     <th>ID de l'evenement</th>
@@ -11,15 +12,40 @@
   </tr>
   <br>
   <% @events.each do |event| %>
+   <% if event.date >= Date.today %>
+    <tr>
+      <td><%= event.id %></td>
+      <td><%= event.title %> </td>
+      <td><%= event.date %></td>
+      <td><%= event.place %></td>
+      <td><%= event.creator.name %> </td>
+      <td><%= link_to " Voir l'événement", event_path(event) %></td>
+    </tr>
+    <% end%>
+  <% end %>
+</table>
+<br><br>
+<h4>Evenements passés :</h4>
+<table>
   <tr>
-    <td><%= event.id %></td>
-    <td><%= event.title %> </td>
-    <td><%= event.date %></td>
-    <td><%= event.place %></td>
-    <td><%= event.creator.name %> </td>
-    <td><%= link_to " Voir l'événement", event_path(event) %></td>
-
+    <th>ID de l'evenement</th>
+    <th>Nom de l'événement</th>
+    <th>Date</th>
+    <td>Lieu</td>
+    <th>Createur</th>
   </tr>
+  <br>
+  <% @events.each do |event| %>
+   <% if event.date < Date.today %>
+    <tr>
+      <td><%= event.id %></td>
+      <td><%= event.title %> </td>
+      <td><%= event.date %></td>
+      <td><%= event.place %></td>
+      <td><%= event.creator.name %> </td>
+      <td><%= link_to " Voir l'événement", event_path(event) %></td>
+    </tr>
+    <% end%>
   <% end %>
 </table>
 <br><br>
