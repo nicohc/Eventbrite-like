@@ -10,5 +10,5 @@
 - Affichage des créations et inscriptions aux events sur son profil avec distinction événements passés et avenirs : OK
 
 
-Le lien magique : https://zeventbrite.herokuapp.com/events  
+Le lien magique : https://zeventbrite.herokuapp.com/  
 (Avec un tout petit peu de css quand même sinon ca pique)
